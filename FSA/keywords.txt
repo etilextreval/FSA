@@ -1,0 +1,36 @@
+###########################################
+# Syntax Coloring Map For Arduino_FSA
+###########################################
+
+###########################################
+# Datatypes (KEYWORD1)
+###########################################
+
+Trans						KEYWORD1
+State						KEYWORD1
+StateMgr					KEYWORD1
+cStateMgr				KEYWORD1
+cState						KEYWORD1
+cTrans						KEYWORD1
+TTrans						KEYWORD1
+THandlerFct				KEYWORD1
+
+###########################################
+# Methods and Functions (KEYWORD2)
+###########################################
+init							KEYWORD2
+begin						KEYWORD2
+resetTimer				KEYWORD2
+validate					KEYWORD2
+onCondition				KEYWORD2
+onTimer					KEYWORD2
+run							KEYWORD2
+onEnter					KEYWORD2
+onProgress				KEYWORD2
+onExit						KEYWORD2
+addTrans					KEYWORD2
+getNextState			KEYWORD2
+
+###########################################
+# Constants (LITERAL1)
+###########################################
