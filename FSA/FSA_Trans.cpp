@@ -1,6 +1,6 @@
 ///************************************************************************/
 /*!
-@file main.cpp
+@file FSA_Trans.cpp
 Original source by Alex Livrette (aka. etilextreval)
 released to the public domain
 License: MIT (see LICENSE)
@@ -8,10 +8,16 @@ License: MIT (see LICENSE)
 */
 /**************************************************************************/
 
-#include <iostream>
+#include <stdio.h>
+#include "FSA_Trans.h"
+#include "FSA_State.h"
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+CTrans::CTrans(CState &nextSt,std::function<bool()> fct):
+    _nextSt(nextSt),
+    _fct(fct){
+    
+}
+
+bool CTrans::isValid() {
+    return _fct();
 }
