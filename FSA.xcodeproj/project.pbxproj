@@ -27,6 +27,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF2DEE0B2466AE0A007ED127 /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		BF2DEE0C2466AE0B007ED127 /* library.properties */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = library.properties; sourceTree = "<group>"; };
+		BF2DEE0D2466AE0B007ED127 /* library.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = library.json; sourceTree = "<group>"; };
+		BF2DEE0E2466AE0B007ED127 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BF78AD14246597140093B2AD /* FSA */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FSA; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF78AD1E246597300093B2AD /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../TEST/main.cpp; sourceTree = "<group>"; };
 		BF78AD23246597C10093B2AD /* FSA_Trans.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSA_Trans.h; sourceTree = "<group>"; };
@@ -54,6 +58,10 @@
 		BF78AD0B246597140093B2AD = {
 			isa = PBXGroup;
 			children = (
+				BF2DEE0D2466AE0B007ED127 /* library.json */,
+				BF2DEE0B2466AE0A007ED127 /* keywords.txt */,
+				BF2DEE0E2466AE0B007ED127 /* README.md */,
+				BF2DEE0C2466AE0B007ED127 /* library.properties */,
 				BF78AD16246597140093B2AD /* FSA */,
 				BF78AD15246597140093B2AD /* Products */,
 			);
