@@ -1,2 +1,3 @@
-# ArduinoFSA
-Arduino FSA to implements FSM on Arduino
+# FSA
+A library to implements FSM on many AVR platforms
+
