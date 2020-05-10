@@ -14,13 +14,22 @@ License: MIT (see LICENSE)
 #include "FSA_State.h"
 #include "FSA_Trans.h"
 
+/*!
+ @brief Destructor : deletes each trans of _lstTrans and vector
+ */
 CStateCtx::~CStateCtx(){
-
+    
     for(std::vector<CTrans*>::iterator tr=_lstTrans.begin();tr != _lstTrans.end();++tr)
         delete (*tr);
     _lstTrans.clear();
 }
 
+/*!
+ @brief Creates CTrans object with next state to go and function pointer to validate
+        Puts CTrans object into vector
+ @param nextSt reference,fct pointer
+ @return CTrans pointer
+ */
 CTrans* CStateCtx::setTrans(CState &nextSt,std::function<bool()> fct) {
  
     CTrans *tr = new CTrans(nextSt,fct);
@@ -29,6 +38,10 @@ CTrans* CStateCtx::setTrans(CState &nextSt,std::function<bool()> fct) {
     return tr;
 }
 
+/*!
+ @brief Gets the first valid trans in vector
+ @return CTrans pointer
+ */
 CTrans* CStateCtx::getValidTrans() {
 
     for(std::vector<CTrans*>::iterator it = _lstTrans.begin(); it!=_lstTrans.end() ; ++it)
@@ -37,12 +50,14 @@ CTrans* CStateCtx::getValidTrans() {
     return nullptr;
 }
 
+/*!
+ @brief Gets the next state to go for the first valid trans in vector
+ @return CState pointer
+ */
 CState* CStateCtx::getNextState() {
     
     CTrans *tr = getValidTrans();
     if(tr != nullptr)
         return tr->getNextState();
-    
     return nullptr;
-};
-
+}

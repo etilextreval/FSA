@@ -12,6 +12,10 @@ License: MIT (see LICENSE)
 #include "FSA_State.h"
 #include "FSA_Ctx.h"
 
+/*!
+ @brief Constructor
+ @param ctx reference
+ */
 CState::CState(CStateCtx &ctx):
 
     _ctx(ctx) {
@@ -20,24 +24,25 @@ CState::CState(CStateCtx &ctx):
 CState::~CState() {
 }
 
+/*!
+ @brief Executes entering operations
+ */
 void CState::runEnter() {
 
     _ctx.runEnter();
 }
 
 /*!
- @brief Executes progressing operation
+ @brief Executes progressing operations
  */
-
 void CState::runProgress() {
     
     _ctx.runProgress();
 }
 
 /*!
- @brief Executes exiting operation
+ @brief Executes exiting operations
  */
-
 void CState::runExit() {
     
     _ctx.runExit();
@@ -47,7 +52,6 @@ void CState::runExit() {
  @brief Gets next state to go if a valid transition was found
  @return the next state ptr
  */
-
 CState* CState::getNextState() {
 
     return _ctx.getNextState();

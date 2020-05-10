@@ -35,8 +35,8 @@ protected:
     std::vector<CTrans*> _lstTrans;
 };
 
-template<class T>
-CTrans* CStateCtx::setTrans(CState &nextSt,std::function<bool(T&)> fct){
+template<class T> CTrans* CStateCtx::setTrans(CState &nextSt,std::function<bool(T&)> fct){
+    
     std::function<bool()> _fct = std::bind(fct,std::ref((T&)*this));
     CTrans *tr = new CTrans(nextSt,_fct);
     if(tr != nullptr)

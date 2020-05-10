@@ -12,6 +12,10 @@ License: MIT (see LICENSE)
 #include "FSA_Mgr.h"
 #include "FSA_State.h"
 
+/*!
+@brief Constructor
+@param startSt reference (initial state to start the machine)
+*/
 CAbstractMgr::CAbstractMgr(CState& startSt) :
     _bEnter(true),
     _bProgress(false),
@@ -19,12 +23,21 @@ CAbstractMgr::CAbstractMgr(CState& startSt) :
     _nextSt(nullptr)
 {};
 
+/*!
+@brief Destructor
+*/
 CAbstractMgr::~CAbstractMgr() {
     //delete _curSt;
     //delete _nextSt;
 }
 
-void CAbstractMgr::run(void) {
+/*!
+@brief main function of the machine to manage
+        _pre() is pre treatment on each loop (virtual)
+        _post() is post treatment on each loop (virtual)
+        run...() executes each state routine
+*/
+void CAbstractMgr::run() {
     
     _pre();
     

@@ -12,16 +12,27 @@ License: MIT (see LICENSE)
 #include "FSA_Trans.h"
 #include "FSA_State.h"
 
+/*!
+ @brief Constructor
+ @param nextSt reference,fct function pointer to validation function
+ */
 CTrans::CTrans(CState &nextSt,std::function<bool()> fct):
     _nextSt(nextSt),
     _fct(fct){    
 }
 
+/*!
+ @brief validation function
+ */
 bool CTrans::isValid() {
     
     return _fct();
 }
 
+/*!
+ @brief get the next state to go
+ @return _nextSt pointer
+ */
 CState* CTrans::getNextState() {
     
     return &_nextSt;
