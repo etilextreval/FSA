@@ -26,7 +26,6 @@ CTrans* CStateCtx::setTrans(CState &nextSt,std::function<bool()> fct) {
     CTrans *tr = new CTrans(nextSt,fct);
     if(tr != nullptr)
         _lstTrans.push_back(tr);
-    tr->isValid();          //TEST
     return tr;
 }
 
@@ -37,4 +36,13 @@ CTrans* CStateCtx::getValidTrans() {
             return *it;
     return nullptr;
 }
+
+CState* CStateCtx::getNextState() {
+    
+    CTrans *tr = getValidTrans();
+    if(tr != nullptr)
+        return tr->getNextState();
+    
+    return nullptr;
+};
 

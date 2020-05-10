@@ -13,13 +13,12 @@ License: MIT (see LICENSE)
 #include "FSA_Ctx.h"
 
 CState::CState(CStateCtx &ctx):
+
     _ctx(ctx) {
 }
 
 CState::~CState() {
-    
 }
-
 
 void CState::runEnter() {
 

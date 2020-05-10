@@ -14,10 +14,16 @@ License: MIT (see LICENSE)
 
 CTrans::CTrans(CState &nextSt,std::function<bool()> fct):
     _nextSt(nextSt),
-    _fct(fct){
-    
+    _fct(fct){    
 }
 
 bool CTrans::isValid() {
+    
     return _fct();
 }
+
+CState* CTrans::getNextState() {
+    
+    return &_nextSt;
+}
+

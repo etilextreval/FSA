@@ -13,37 +13,38 @@ License: MIT (see LICENSE)
 #include "FSA_State.h"
 
 CAbstractMgr::CAbstractMgr(CState& startSt) :
-    _bEnterSt(true),
-    _bProgressSt(false),
+    _bEnter(true),
+    _bProgress(false),
     _curSt(&startSt),
     _nextSt(nullptr)
 {};
 
 CAbstractMgr::~CAbstractMgr() {
-    delete _nextSt;
+    //delete _curSt;
+    //delete _nextSt;
 }
 
 void CAbstractMgr::run(void) {
     
     _pre();
     
-    if(_bEnterSt) {                                    // on entering the current state
-        _bEnterSt = false;
-        _bProgressSt = true;
+    if(_bEnter) {                                    // on entering the current state
+        _bEnter = false;
+        _bProgress = true;
         _curSt->runEnter();                             // do entering actions once
     }
     
-    if(_bProgressSt)
+    if(_bProgress)
         _curSt->runProgress();                          // do progress actions (only if previously entered)
     
     _nextSt = _curSt->getNextState();                 // get the next state if a transition is true
     
-    if(_nextSt != NULL) {                             // if next state was found
+    if(_nextSt != nullptr) {                             // if next state was found
         _curSt->runExit();                              // do exit actions
         _curSt = _nextSt;                               // change for next state
-        _bProgressSt = false;
-        _bEnterSt = true;
+        _bProgress = false;
+        _bEnter = true;
     }
-    
+
     _post();
 }

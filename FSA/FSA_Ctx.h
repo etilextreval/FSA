@@ -23,13 +23,13 @@ class CStateCtx {
 public:
     CStateCtx(){};
     virtual ~CStateCtx();
-    void runEnter(){};
-    void runProgress(){};
-    void runExit(){};
-    CState* getNextState(){ return nullptr;};
+    virtual void runEnter(){};
+    virtual void runProgress(){};
+    virtual void runExit(){};
     template<class T> CTrans* setTrans(CState &nextSt,std::function<bool(T&)> fct);
     CTrans* setTrans(CState &nextSt,std::function<bool()> fct);
     CTrans* getValidTrans();
+    CState* getNextState();
     
 protected:
     std::vector<CTrans*> _lstTrans;
@@ -38,11 +38,10 @@ protected:
 template<class T>
 CTrans* CStateCtx::setTrans(CState &nextSt,std::function<bool(T&)> fct){
     
-    std::function<bool()> _fct = std::bind(fct,(T&)*this);
+    std::function<bool()> _fct = std::bind(fct,std::ref((T&)*this));
     CTrans *tr = new CTrans(nextSt,_fct);
     if(tr != nullptr)
         _lstTrans.push_back(tr);
-    tr->isValid();          //TEST
     return tr;
 }
 

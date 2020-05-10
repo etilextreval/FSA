@@ -19,6 +19,7 @@ class CTrans {
 public:
     CTrans(CState &nextSt,std::function<bool()> fct);
     bool isValid();
+    CState* getNextState();
     
 private:
     std::function<bool()> _fct;

@@ -25,8 +25,8 @@ protected:
     virtual void _post()=0;
     
 private:
-    bool _bEnterSt;
-    bool _bProgressSt;
+    bool _bEnter;
+    bool _bProgress;
     CState *_curSt;
     CState *_nextSt;
 };
