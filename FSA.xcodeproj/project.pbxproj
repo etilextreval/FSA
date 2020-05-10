@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF78AD20246597310093B2AD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF78AD1E246597300093B2AD /* main.cpp */; };
 		BF78AD28246599120093B2AD /* FSA_Trans.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF78AD27246599120093B2AD /* FSA_Trans.cpp */; };
 		BF78AD2A246599430093B2AD /* FSA_State.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF78AD29246599430093B2AD /* FSA_State.cpp */; };
 		BF78AD2C246599720093B2AD /* FSA_Ctx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF78AD2B246599720093B2AD /* FSA_Ctx.cpp */; };
 		BF78AD2E246599920093B2AD /* FSA_Mgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF78AD2D246599920093B2AD /* FSA_Mgr.cpp */; };
+		BF8ABF1024681A9E0003AEDD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8ABF0E24681A9E0003AEDD /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,7 +32,6 @@
 		BF2DEE0D2466AE0B007ED127 /* library.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = library.json; sourceTree = "<group>"; };
 		BF2DEE0E2466AE0B007ED127 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BF78AD14246597140093B2AD /* FSA */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FSA; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF78AD1E246597300093B2AD /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../TEST/main.cpp; sourceTree = "<group>"; };
 		BF78AD23246597C10093B2AD /* FSA_Trans.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSA_Trans.h; sourceTree = "<group>"; };
 		BF78AD24246597DE0093B2AD /* FSA_State.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSA_State.h; sourceTree = "<group>"; };
 		BF78AD25246597F20093B2AD /* FSA_Ctx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSA_Ctx.h; sourceTree = "<group>"; };
@@ -42,6 +41,8 @@
 		BF78AD2B246599720093B2AD /* FSA_Ctx.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSA_Ctx.cpp; sourceTree = "<group>"; };
 		BF78AD2D246599920093B2AD /* FSA_Mgr.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSA_Mgr.cpp; sourceTree = "<group>"; };
 		BF78AD2F2465A3110093B2AD /* FSA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSA.h; sourceTree = "<group>"; };
+		BF8ABF0E24681A9E0003AEDD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		BF8ABF0F24681A9E0003AEDD /* main.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = main.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +59,8 @@
 		BF78AD0B246597140093B2AD = {
 			isa = PBXGroup;
 			children = (
+				BF8ABF0E24681A9E0003AEDD /* main.cpp */,
+				BF8ABF0F24681A9E0003AEDD /* main.hpp */,
 				BF2DEE0D2466AE0B007ED127 /* library.json */,
 				BF2DEE0B2466AE0A007ED127 /* keywords.txt */,
 				BF2DEE0E2466AE0B007ED127 /* README.md */,
@@ -78,7 +81,6 @@
 		BF78AD16246597140093B2AD /* FSA */ = {
 			isa = PBXGroup;
 			children = (
-				BF78AD1E246597300093B2AD /* main.cpp */,
 				BF78AD24246597DE0093B2AD /* FSA_State.h */,
 				BF78AD29246599430093B2AD /* FSA_State.cpp */,
 				BF78AD23246597C10093B2AD /* FSA_Trans.h */,
@@ -149,7 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF78AD2C246599720093B2AD /* FSA_Ctx.cpp in Sources */,
-				BF78AD20246597310093B2AD /* main.cpp in Sources */,
+				BF8ABF1024681A9E0003AEDD /* main.cpp in Sources */,
 				BF78AD28246599120093B2AD /* FSA_Trans.cpp in Sources */,
 				BF78AD2E246599920093B2AD /* FSA_Mgr.cpp in Sources */,
 				BF78AD2A246599430093B2AD /* FSA_State.cpp in Sources */,

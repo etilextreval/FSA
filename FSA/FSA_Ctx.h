@@ -37,7 +37,6 @@ protected:
 
 template<class T>
 CTrans* CStateCtx::setTrans(CState &nextSt,std::function<bool(T&)> fct){
-    
     std::function<bool()> _fct = std::bind(fct,std::ref((T&)*this));
     CTrans *tr = new CTrans(nextSt,_fct);
     if(tr != nullptr)
