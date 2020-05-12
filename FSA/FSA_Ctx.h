@@ -21,21 +21,23 @@ class CTrans;
 class CStateCtx {
     
 public:
-    CStateCtx(){};
+    CStateCtx();
+    CStateCtx(const CStateCtx &ctx);
+    /*CStateCtx& operator=(const CStateCtx &ctx);*/
     virtual ~CStateCtx();
     virtual void runEnter(){};
     virtual void runProgress(){};
     virtual void runExit(){};
-    template<class T> CTrans* setTrans(CState &nextSt,std::function<bool(T&)> fct);
-    CTrans* setTrans(CState &nextSt,std::function<bool()> fct);
-    CTrans* getValidTrans();
-    CState* getNextState();
+    template<class T> CTrans* setTrans(const CState &nextSt,std::function<bool(T&)> fct);
+    CTrans* setTrans(const CState &nextSt,std::function<bool()> fct);
+    CTrans* getValidTrans() const;
+    CState* getNextState() const;
     
 protected:
     std::vector<CTrans*> _lstTrans;
 };
 
-template<class T> CTrans* CStateCtx::setTrans(CState &nextSt,std::function<bool(T&)> fct){
+template<class T> CTrans* CStateCtx::setTrans(const CState &nextSt,std::function<bool(T&)> fct){
     
     std::function<bool()> _fct = std::bind(fct,std::ref((T&)*this));
     CTrans *tr = new CTrans(nextSt,_fct);

@@ -16,8 +16,8 @@ License: MIT (see LICENSE)
  @brief Constructor
  @param nextSt reference,fct function pointer to validation function
  */
-CTrans::CTrans(CState &nextSt,std::function<bool()> fct):
-    _nextSt(nextSt),
+CTrans::CTrans(const CState &nextSt,std::function<bool()> fct):
+    _nextSt((CState&)nextSt),
     _fct(fct){    
 }
 

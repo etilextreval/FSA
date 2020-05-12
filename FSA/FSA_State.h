@@ -14,16 +14,21 @@ License: MIT (see LICENSE)
 class CStateCtx;
 
 class CState {
+    
 public:
-    CState(CStateCtx &ctx);
+    CState(CStateCtx &ctx,bool last = false);
+    CState(const CState &st);
+    CState& operator=(CState &st);
     ~CState();
-    void runEnter();
-    void runProgress();
-    void runExit();
-    CState* getNextState();
+    void runEnter() const;
+    void runProgress() const;
+    void runExit()const ;
+    bool isLast();
+    CState* getNextState() const;
     
 private:
     CStateCtx &_ctx;
+    bool _last;
 };
 
 

@@ -81,6 +81,7 @@
 		BF78AD16246597140093B2AD /* FSA */ = {
 			isa = PBXGroup;
 			children = (
+				BF78AD2F2465A3110093B2AD /* FSA.h */,
 				BF78AD24246597DE0093B2AD /* FSA_State.h */,
 				BF78AD29246599430093B2AD /* FSA_State.cpp */,
 				BF78AD23246597C10093B2AD /* FSA_Trans.h */,
@@ -89,7 +90,6 @@
 				BF78AD2B246599720093B2AD /* FSA_Ctx.cpp */,
 				BF78AD26246598020093B2AD /* FSA_Mgr.h */,
 				BF78AD2D246599920093B2AD /* FSA_Mgr.cpp */,
-				BF78AD2F2465A3110093B2AD /* FSA.h */,
 			);
 			path = FSA;
 			sourceTree = "<group>";

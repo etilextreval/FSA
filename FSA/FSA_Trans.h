@@ -17,13 +17,13 @@ class CState;
 class CTrans {
     
 public:
-    CTrans(CState &nextSt,std::function<bool()> fct);
+    CTrans(const CState &nextSt,std::function<bool()> fct);
     bool isValid();
     CState* getNextState();
     
 private:
     std::function<bool()> _fct;
-    CState &_nextSt;
+    CState & _nextSt;
 };
 
 #endif /* FSA_Trans_h */

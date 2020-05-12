@@ -14,6 +14,23 @@ License: MIT (see LICENSE)
 #include "FSA_State.h"
 #include "FSA_Trans.h"
 
+
+CStateCtx::CStateCtx() {
+    
+}
+
+CStateCtx::CStateCtx(const CStateCtx &ctx) {
+    
+    _lstTrans = ctx._lstTrans;
+}
+/*
+CStateCtx& CStateCtx::operator=(const CStateCtx &ctx) {
+    
+    _lstTrans.erase(_lstTrans.begin(),_lstTrans.end());
+    _lstTrans = ctx._lstTrans;
+    return *this;
+}*/
+
 /*!
  @brief Destructor : deletes each trans of _lstTrans and vector
  */
@@ -30,7 +47,7 @@ CStateCtx::~CStateCtx(){
  @param nextSt reference,fct pointer
  @return CTrans pointer
  */
-CTrans* CStateCtx::setTrans(CState &nextSt,std::function<bool()> fct) {
+CTrans* CStateCtx::setTrans(const CState &nextSt,std::function<bool()> fct) {
  
     CTrans *tr = new CTrans(nextSt,fct);
     if(tr != nullptr)
@@ -42,9 +59,9 @@ CTrans* CStateCtx::setTrans(CState &nextSt,std::function<bool()> fct) {
  @brief Gets the first valid trans in vector
  @return CTrans pointer
  */
-CTrans* CStateCtx::getValidTrans() {
+CTrans* CStateCtx::getValidTrans() const {
 
-    for(std::vector<CTrans*>::iterator it = _lstTrans.begin(); it!=_lstTrans.end() ; ++it)
+    for(std::vector<CTrans*>::const_iterator it = _lstTrans.begin(); it!=_lstTrans.end() ; ++it)
         if((*it)->isValid())
             return *it;
     return nullptr;
@@ -54,7 +71,7 @@ CTrans* CStateCtx::getValidTrans() {
  @brief Gets the next state to go for the first valid trans in vector
  @return CState pointer
  */
-CState* CStateCtx::getNextState() {
+CState* CStateCtx::getNextState() const {
     
     CTrans *tr = getValidTrans();
     if(tr != nullptr)

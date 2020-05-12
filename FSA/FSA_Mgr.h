@@ -16,17 +16,24 @@ class CState;
 class CAbstractMgr {
     
 public:
-    CAbstractMgr(CState& startSt);
+    CAbstractMgr(const CState &startSt);
+    CAbstractMgr(const CAbstractMgr &mgr);
+    CAbstractMgr& operator=(const CAbstractMgr &mgr);
     virtual ~CAbstractMgr();
     void run();
+    void stop();
+    void manage();
+    bool isRun();
     
 protected:
     virtual void _pre()=0;
     virtual void _post()=0;
     
 private:
+    enum : short {STOP,RUN} _activity;
     bool _bEnter;
     bool _bProgress;
+    bool _bExit;
     CState *_curSt;
     CState *_nextSt;
 };
@@ -34,10 +41,10 @@ private:
 class CMgr : public CAbstractMgr {
     
 public:
-    CMgr(CState& startSt):
+    CMgr(const CState& startSt):
     CAbstractMgr(startSt)
     {};
-    ~CMgr(){};
+    
     void _pre() override;
     void _post() override;
 };
