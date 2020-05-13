@@ -51,7 +51,7 @@ CAbstractMgr::CAbstractMgr(const CAbstractMgr &mgr):
 /*!
  @brief = operator override
  @param mgr reference
- @return *this
+ @return *this reference
  */
 CAbstractMgr& CAbstractMgr::operator=(const CAbstractMgr &mgr) {
 
@@ -78,11 +78,15 @@ CAbstractMgr::~CAbstractMgr() {
     delete _nextSt;
 }
 
+/*!
+ @brief Set the current mode of manager
+ @param mode : enum mgrMode
+ */
 void CAbstractMgr::setMode(mgrMode mode) {
     
     _mode = mode;
     if(_mode == STOP) {
-        _init();
+        _reset();
     }
 }
 
@@ -148,12 +152,19 @@ void CAbstractMgr::manage() {
         _mode = STOP;
 }
 
+/*!
+ @brief Get the current running mode of the manager
+ @return true only if is running
+ */
 bool CAbstractMgr::isRun() {
     
     return(_mode == RUN);
 }
 
-void CAbstractMgr::_init() {
+/*!
+ @brief Restore the initial state of manager (created in constructor)
+ */
+void CAbstractMgr::_reset() {
     
     _curSt = _initSt;
     _nextSt = nullptr;
@@ -161,5 +172,3 @@ void CAbstractMgr::_init() {
     _bProgress = false;
     _bExit = false;
 }
-
-

@@ -15,7 +15,7 @@ License: MIT (see LICENSE)
 
 /*!
  @brief Constructor
- @param ctx reference
+ @param ctx : context for the state, last : true if state must be the last
  */
 CState::CState(CStateCtx &ctx,bool last):
     _ctx(ctx),
@@ -23,12 +23,22 @@ CState::CState(CStateCtx &ctx,bool last):
 {
 }
 
+/*!
+ @brief Copy constructor
+ @param st : state to copy
+ */
 CState::CState(const CState &st):
     _ctx(st._ctx),
     _isLast(st._isLast)
 {
 }
 
+
+/*!
+ @brief equal operator override
+ @param st : state to copy
+ @return : *this reference
+ */
 CState& CState::operator=(CState &st) {
     
     _ctx = st._ctx;
@@ -36,6 +46,9 @@ CState& CState::operator=(CState &st) {
     return *this;
 }
 
+/*!
+ @brief Destructor
+ */
 CState::~CState() {
     
 }
@@ -64,6 +77,10 @@ void CState::runExit() const {
     _ctx.runExit();
 }
 
+/*!
+ @brief get the last state status
+ @return status (_isLast bool member)
+ */
 bool CState::isLast() {
     
     return _isLast;

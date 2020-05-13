@@ -4,7 +4,13 @@
 Original source by Alex Livrette (aka. etilextreval)
 released to the public domain
 License: MIT (see LICENSE)
-@brief
+ @brief CAbstractMgr abstract class :
+            - Stores the current state pointer
+            - Stores the next state to go for a valid trans
+            - Manage execution of runXXX methods of current state
+            - Can be runned / stopped / paused
+        CMgr derived class of CAbstractMgr :
+            - Has _pre() and _post() methods for permanent treatms
 */
 /**************************************************************************/
 
@@ -20,7 +26,7 @@ public:
     CAbstractMgr(const CAbstractMgr &mgr);
     CAbstractMgr& operator=(const CAbstractMgr &mgr);
     virtual ~CAbstractMgr();
-    enum mgrMode {STOP,RUN,PAUSE,RESET};
+    enum mgrMode {STOP,RUN,PAUSE};
     void setMode(mgrMode mode);
     void manage();
     bool isRun();
@@ -37,7 +43,7 @@ private:
     CState *_initSt;
     CState *_curSt;
     CState *_nextSt;
-    void _init();
+    void _reset();
 };
 
 class CMgr : public CAbstractMgr {
@@ -50,6 +56,5 @@ public:
     void _pre() override;
     void _post() override;
 };
-
 
 #endif /* FSA_Mgr_h */

@@ -14,7 +14,8 @@ License: MIT (see LICENSE)
 
 /*!
  @brief Constructor
- @param nextSt reference,fct function pointer to validation function
+ @param nextSt : reference to next state if trans is valid
+ @param fct : function used to valid trans
  */
 CTrans::CTrans(const CState &nextSt,std::function<bool()> fct):
     _nextSt((CState&)nextSt),
@@ -22,7 +23,8 @@ CTrans::CTrans(const CState &nextSt,std::function<bool()> fct):
 }
 
 /*!
- @brief validation function
+ @brief Validation function
+ @return _fct() return value
  */
 bool CTrans::isValid() {
     
@@ -30,10 +32,10 @@ bool CTrans::isValid() {
 }
 
 /*!
- @brief get the next state to go
- @return _nextSt pointer
+ @brief Get the next state to go
+ @return _nextSt : pointer to next state
  */
-CState* CTrans::getNextState() {
+CState* CTrans::getNext() {
     
     return &_nextSt;
 }

@@ -4,7 +4,10 @@
 Original source by Alex Livrette (aka. etilextreval)
 released to the public domain
 License: MIT (see LICENSE)
-@brief
+ @brief CState class :
+            - Stores a unique context (CAbastractCtx object or derived)
+            - Executes context methods runXXX
+            - Access next states of context vector of trans
 */
 /**************************************************************************/
 

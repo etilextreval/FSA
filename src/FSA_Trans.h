@@ -4,7 +4,8 @@
 Original source by Alex Livrette (aka. etilextreval)
 released to the public domain
 License: MIT (see LICENSE)
-@brief
+@brief CTrans class stores the next state to go and the function used
+        to validate the state changing
 */
 /**************************************************************************/
 
@@ -20,7 +21,7 @@ class CTrans {
 public:
     CTrans(const CState &nextSt,std::function<bool()> fct);
     bool isValid();
-    CState* getNextState();
+    CState* getNext();
     
 private:
     std::function<bool()> _fct;

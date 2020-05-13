@@ -14,21 +14,34 @@ License: MIT (see LICENSE)
 #include "FSA_Trans.h"
 #include <stdio.h>
 
+/*!
+@brief Default constructor
+*/
 CStateCtx::CStateCtx() {
     
 }
+
+/*!
+ @brief Copy constructor
+ @param ctx : context to copy
+ */
 
 CStateCtx::CStateCtx(const CStateCtx &ctx) {
     
     _lstTrans = ctx._lstTrans;
 }
-/*
+
+/*!
+ @brief equal operator override
+ @param ctx : context to copy
+ @return *this reference
+ */
 CStateCtx& CStateCtx::operator=(const CStateCtx &ctx) {
     
     _lstTrans.erase(_lstTrans.begin(),_lstTrans.end());
     _lstTrans = ctx._lstTrans;
     return *this;
-}*/
+}
 
 /*!
  @brief Destructor : deletes each trans of _lstTrans and vector
@@ -74,6 +87,6 @@ CState* CStateCtx::getNextState() const {
     
     CTrans *tr = getValidTrans();
     if(tr != nullptr)
-        return tr->getNextState();
+        return tr->getNext();
     return nullptr;
 }

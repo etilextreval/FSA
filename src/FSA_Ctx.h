@@ -4,8 +4,12 @@
 Original source by Alex Livrette (aka. etilextreval)
 released to the public domain
 License: MIT (see LICENSE)
-@brief
-*/
+ @brief  CStateCtx class used to :
+    - Creates and stores CTrans objects in vector
+    - Executes runXXXX methods (of derived classes)
+    - Manage CTrans objects validation by their functions
+
+ */
 /**************************************************************************/
 
 #ifndef FSA_Ctx_h
@@ -23,7 +27,7 @@ class CStateCtx {
 public:
     CStateCtx();
     CStateCtx(const CStateCtx &ctx);
-    /*CStateCtx& operator=(const CStateCtx &ctx);*/
+    CStateCtx& operator=(const CStateCtx &ctx);
     virtual ~CStateCtx();
     virtual void runEnter(){};
     virtual void runProgress(){};
@@ -46,5 +50,6 @@ template<class T> CTrans* CStateCtx::setTrans(const CState &nextSt,std::function
     return tr;
 }
 
+#endif
 
-#endif /* FSA_Ctx_h */
+/* FSA_Ctx_h */
