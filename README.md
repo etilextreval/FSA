@@ -1,3 +1,3 @@
 # FSA
-A library to implement FSM on many AVR platforms
+A library to implement FSM on many AVR platforms 
 
