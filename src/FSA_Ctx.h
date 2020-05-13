@@ -11,9 +11,9 @@ License: MIT (see LICENSE)
 #ifndef FSA_Ctx_h
 #define FSA_Ctx_h
 
+#include "FSA_Trans.h"
 #include <functional>
 #include <vector>
-#include "FSA_Trans.h"
 
 class CState;
 class CTrans;

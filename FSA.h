@@ -11,7 +11,6 @@ License: MIT (see LICENSE)
 #ifndef FSA_h
 #define FSA_h
 
-
 #include "FSA_Ctx.h"
 #include "FSA_Trans.h"
 #include "FSA_State.h"

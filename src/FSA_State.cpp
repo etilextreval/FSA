@@ -8,9 +8,9 @@ License: MIT (see LICENSE)
 */
 /**************************************************************************/
 
-#include <stdio.h>
 #include "FSA_State.h"
 #include "FSA_Ctx.h"
+#include <stdio.h>
 
 /*!
  @brief Constructor

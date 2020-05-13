@@ -8,10 +8,10 @@ License: MIT (see LICENSE)
 */
 /**************************************************************************/
 
-#include <stdio.h>
 #include "FSA_Mgr.h"
-#include "FSA_State.h"
 #include "FSA_Ctx.h"
+#include "FSA_State.h"
+#include <stdio.h>
 
 /*!
 @brief Constructor
@@ -21,10 +21,12 @@ CAbstractMgr::CAbstractMgr(const CState& startSt) :
     _bEnter(true),
     _bProgress(false),
     _bExit(false),
+    _initSt(nullptr),
     _curSt(nullptr),
     _nextSt(nullptr)            // will be known and created in manage method
 {
     _curSt = new CState(startSt);
+    _initSt = _curSt;
 }
 
 /*!
@@ -76,15 +78,14 @@ CAbstractMgr::~CAbstractMgr() {
     delete _nextSt;
 }
 
-void CAbstractMgr::run() {
+void CAbstractMgr::setMode(mgrMode mode) {
     
-    _activity = RUN;
+    _mode = mode;
+    if(_mode == STOP) {
+        _init();
+    }
 }
 
-void CAbstractMgr::stop() {
-    
-    _activity = STOP;
-}
 
 /*!
 @brief managing function of the machine
@@ -94,35 +95,21 @@ void CAbstractMgr::stop() {
  */
 void CAbstractMgr::manage() {
     
-    if(_activity == RUN) {
+    if(_mode == RUN) {
+        
+        _bProgress = !_bEnter && !_bExit;
         
         _pre();
 
         if(_bEnter) {
             _bEnter = false;
-            _bProgress = true;
             _curSt->runEnter();
+            return;
         }
 
         if(_bProgress)
             _curSt->runProgress();
 
-        if(_curSt->isLast()) {
-            _bExit = true;
-            _nextSt = nullptr;
-        }
-        else {
-            CState *st = _curSt->getNextState();        // test transitions
-            if(st != nullptr) {                         // if a valid transition was found
-                _bExit = true;
-                _nextSt = new CState(*st);
-            }
-            else {
-                _bExit = false;
-                _nextSt = nullptr;
-            }
-        }
-        
         if(_bExit) {
             _curSt->runExit();
             if(_nextSt != nullptr) {
@@ -133,17 +120,46 @@ void CAbstractMgr::manage() {
             _bProgress = false;
             _bExit = false;
         }
+        else {
+            if(_curSt->isLast()) {
+                _bExit = true;
+                _nextSt = nullptr;
+                return;
+            }
+            else {
+                CState *st = _curSt->getNextState();        // test transitions
+                if(st != nullptr) {                         // if a valid transition was found
+                    _bExit = true;
+                    _nextSt = new CState(*st);
+                    return;
+                }
+                else {
+                    _bExit = false;
+                    _nextSt = nullptr;
+                    return;
+                }
+            }
+        }
     
         _post();
     }
 
     if(_curSt->isLast())
-        _activity = STOP;
+        _mode = STOP;
 }
 
 bool CAbstractMgr::isRun() {
     
-    return(_activity == RUN);
+    return(_mode == RUN);
+}
+
+void CAbstractMgr::_init() {
+    
+    _curSt = _initSt;
+    _nextSt = nullptr;
+    _bEnter = true;
+    _bProgress = false;
+    _bExit = false;
 }
 
 

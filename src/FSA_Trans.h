@@ -10,6 +10,7 @@ License: MIT (see LICENSE)
 
 #ifndef FSA_Trans_h
 #define FSA_Trans_h
+
 #include <functional>
 
 class CState;

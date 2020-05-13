@@ -66,18 +66,35 @@ int main(int argc, const char * argv[]) {
     CState stWait(ctxWait);
     
     CMenuCtx ctxMenu;
-    CState stMenu(ctxMenu,true); // last state will stop mgr
+    CState stMenu(ctxMenu);
     
     CMgr mgr(stWait);
     
     ctxWait.setTrans<CWaitCtx>(stMenu,&CWaitCtx::toMenu);
     ctxMenu.setTrans<CMenuCtx>(stWait,&CMenuCtx::toWait);
     
-    mgr.run();
+    mgr.setMode(CMgr::RUN);
+    int i(0);
     
     while(mgr.isRun()) {
+        
+        if(i == 3)
+           mgr.setMode(CMgr::STOP);
+        
         mgr.manage();
-    } 
- 
+        
+        i++;
+    }
+    i = 0;
+    mgr.setMode(CMgr::RUN);
+    while(mgr.isRun()) {
+        
+        if(i == 5)
+            mgr.setMode(CMgr::PAUSE);
+        
+        mgr.manage();
+        
+        i++;
+    }
     return 0;
 }

@@ -20,8 +20,8 @@ public:
     CAbstractMgr(const CAbstractMgr &mgr);
     CAbstractMgr& operator=(const CAbstractMgr &mgr);
     virtual ~CAbstractMgr();
-    void run();
-    void stop();
+    enum mgrMode {STOP,RUN,PAUSE,RESET};
+    void setMode(mgrMode mode);
     void manage();
     bool isRun();
     
@@ -30,12 +30,14 @@ protected:
     virtual void _post()=0;
     
 private:
-    enum : short {STOP,RUN} _activity;
+    mgrMode _mode;
     bool _bEnter;
     bool _bProgress;
     bool _bExit;
+    CState *_initSt;
     CState *_curSt;
     CState *_nextSt;
+    void _init();
 };
 
 class CMgr : public CAbstractMgr {

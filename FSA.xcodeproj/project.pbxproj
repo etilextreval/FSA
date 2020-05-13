@@ -56,16 +56,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF1D4BAA246BFDEC00A08B4B /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				BF8ABF0F24681A9E0003AEDD /* main.hpp */,
+				BF8ABF0E24681A9E0003AEDD /* main.cpp */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
 		BF78AD0B246597140093B2AD = {
 			isa = PBXGroup;
 			children = (
-				BF8ABF0E24681A9E0003AEDD /* main.cpp */,
-				BF8ABF0F24681A9E0003AEDD /* main.hpp */,
 				BF2DEE0D2466AE0B007ED127 /* library.json */,
 				BF2DEE0B2466AE0A007ED127 /* keywords.txt */,
 				BF2DEE0E2466AE0B007ED127 /* README.md */,
 				BF2DEE0C2466AE0B007ED127 /* library.properties */,
-				BF78AD16246597140093B2AD /* FSA */,
+				BF78AD2F2465A3110093B2AD /* FSA.h */,
+				BF1D4BAA246BFDEC00A08B4B /* examples */,
+				BF78AD16246597140093B2AD /* src */,
 				BF78AD15246597140093B2AD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -78,10 +87,9 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BF78AD16246597140093B2AD /* FSA */ = {
+		BF78AD16246597140093B2AD /* src */ = {
 			isa = PBXGroup;
 			children = (
-				BF78AD2F2465A3110093B2AD /* FSA.h */,
 				BF78AD24246597DE0093B2AD /* FSA_State.h */,
 				BF78AD29246599430093B2AD /* FSA_State.cpp */,
 				BF78AD23246597C10093B2AD /* FSA_Trans.h */,
@@ -91,7 +99,7 @@
 				BF78AD26246598020093B2AD /* FSA_Mgr.h */,
 				BF78AD2D246599920093B2AD /* FSA_Mgr.cpp */,
 			);
-			path = FSA;
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

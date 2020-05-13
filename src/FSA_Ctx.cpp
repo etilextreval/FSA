@@ -8,12 +8,11 @@ License: MIT (see LICENSE)
 */
 /**************************************************************************/
 
-#include <stdio.h>
-#include "FSA_Ctx.h"
 
+#include "FSA_Ctx.h"
 #include "FSA_State.h"
 #include "FSA_Trans.h"
-
+#include <stdio.h>
 
 CStateCtx::CStateCtx() {
     
