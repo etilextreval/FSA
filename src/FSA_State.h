@@ -28,7 +28,7 @@ public:
     
 private:
     CStateCtx &_ctx;
-    bool _last;
+    bool _isLast;
 };
 
 

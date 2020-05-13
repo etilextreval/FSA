@@ -18,20 +18,20 @@ License: MIT (see LICENSE)
  */
 CState::CState(CStateCtx &ctx,bool last):
     _ctx(ctx),
-    _last(last)
+    _isLast(last)
 {
 }
 
 CState::CState(const CState &st):
     _ctx(st._ctx),
-    _last(st._last)
+    _isLast(st._isLast)
 {
 }
 
 CState& CState::operator=(CState &st) {
     
     _ctx = st._ctx;
-    _last = st._last;
+    _isLast = st._isLast;
     return *this;
 }
 
@@ -65,7 +65,7 @@ void CState::runExit() const {
 
 bool CState::isLast() {
     
-    return _last;
+    return _isLast;
 }
 
 /*!
