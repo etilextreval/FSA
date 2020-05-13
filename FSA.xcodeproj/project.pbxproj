@@ -57,13 +57,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BF1D4BAA246BFDEC00A08B4B /* examples */ = {
+		BF1D4BAA246BFDEC00A08B4B /* test */ = {
 			isa = PBXGroup;
 			children = (
 				BF8ABF0F24681A9E0003AEDD /* main.hpp */,
 				BF8ABF0E24681A9E0003AEDD /* main.cpp */,
 			);
-			path = examples;
+			path = test;
 			sourceTree = "<group>";
 		};
 		BF78AD0B246597140093B2AD = {
@@ -75,7 +75,7 @@
 				BF2DEE0E2466AE0B007ED127 /* README.md */,
 				BF2DEE0C2466AE0B007ED127 /* library.properties */,
 				BF78AD2F2465A3110093B2AD /* FSA.h */,
-				BF1D4BAA246BFDEC00A08B4B /* examples */,
+				BF1D4BAA246BFDEC00A08B4B /* test */,
 				BF78AD16246597140093B2AD /* src */,
 				BF78AD15246597140093B2AD /* Products */,
 			);
