@@ -37,4 +37,7 @@ DerivedData/
 ### Xcode Patch ###
 **/xcshareddata/WorkspaceSettings.xcsettings
 
+## Local
+test/
+
 # End of https://www.gitignore.io/api/xcode
