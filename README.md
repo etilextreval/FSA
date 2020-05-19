@@ -16,16 +16,55 @@ For more informations please follow the Arduino.cc tutorial : [Importing a .zip 
 
 ### Instanciate a *CMgr* (the machine itself)
 
-```C++
+```c++
 // a manager instance
 CMgr mgr;
 ```
 
 ### Create a derived class of *CStateCtx* (the context for a state)
 
-### Implements in your derived class the *runEnter()*, *runProgress()* and *runExit()* methods (used respect. to do actions for entering, progressing and exiting a state)
+```c++
+class CWaitCtx : public CStateCtx {
+
+public:
+    CWaitCtx()
+    {};
+};
+```
+
+### Implement in your derived class the *runEnter()*, *runProgress()* and *runExit()* methods (used respect. to do actions for entering, progressing and exiting a state)
+
+Note that the signature of these methods must be *void runXXXX()*
+
+```c++
+class CWaitCtx : public CStateCtx {
+
+public:
+    CWaitCtx()
+    {};
+    void runEnter() override;
+    void runProgress() override;
+    void runExit() override;
+
+private:
+int _myCtxValue;
+};
+```
 
 ### Implement at least a transition method in your derived class (choose any name for it)
+
+```c++
+class CWaitCtx : public CStateCtx {
+
+public:
+    CWaitCtx()
+    {};
+    bool toMenu();
+    void runEnter() override;
+    void runProgress() override;
+    void runExit() override;
+};
+```
 
 
 ## Usage
