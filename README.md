@@ -16,7 +16,7 @@ For more informations please follow the Arduino.cc tutorial : [Importing a .zip 
 
 ### Instanciate a *CMgr* (the machine itself)
 
-```C
+```C++
 // a manager instance
 CMgr mgr;
 ```
