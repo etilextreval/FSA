@@ -16,6 +16,11 @@ For more informations please follow the Arduino.cc tutorial : [Importing a .zip 
 
 ### Instanciate a *CMgr* (the machine itself)
 
+```C
+// a manager instance
+CMgr mgr;
+```
+
 ### Create a derived class of *CStateCtx* (the context for a state)
 
 ### Implements in your derived class the *runEnter()*, *runProgress()* and *runExit()* methods (used respect. to do actions for entering, progressing and exiting a state)
