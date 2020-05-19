@@ -14,12 +14,16 @@ For more informations please follow the Arduino.cc tutorial : [Importing a .zip 
 
 ## Quick start
 
-### Instanciate a *CMgr* (the machine itself)
+### Instanciate a *CMgr* (the machine itself) for example in the setup function :
 
-```c++
-// a manager instance
-CMgr mgr;
-```
+<pre lang="c++">
+
+void setup() {
+    
+    // a manager instance
+    <b>CMgr</b> mgr;
+}
+</pre>
 
 ### Create a derived class of *CStateCtx* (the context for a state)
 
