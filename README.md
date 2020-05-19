@@ -14,18 +14,9 @@ For more informations please follow the Arduino.cc tutorial : [Importing a .zip 
 
 ## Quick start
 
-### Instanciate a *CMgr* (the machine itself) for example in the setup function :
+### Context class declaration 
 
-<pre lang="c++">
-
-void setup() {
-    
-    // a manager instance
-    <b>CMgr</b> mgr;
-}
-</pre>
-
-### Create a derived class of *CStateCtx* (the context for a state)
+Create a derived class of *CStateCtx* (the context for a state) here named for example *CWaitCtx*. 
 
 ```c++
 class CWaitCtx : public CStateCtx {
@@ -36,7 +27,13 @@ public:
 };
 ```
 
-### Implement in your derived class the *runEnter()*, *runProgress()* and *runExit()* methods (used respect. to do actions for entering, progressing and exiting a state)
+### State methods declaration 
+
+Implement in your *CWaitCtx* derived class the following 3 methods : 
+
+- *runEnter()* will be executed only when entering state
+- *runProgress()* will be executed on every cycle of the machine for the state
+- *runExit()* will be executed only when exiting state 
 
 Note that the signature of these methods must be *void runXXXX()*
 
@@ -49,13 +46,14 @@ public:
     void runEnter() override;
     void runProgress() override;
     void runExit() override;
-
-private:
-int _myCtxValue;
 };
 ```
 
-### Implement at least a transition method in your derived class (choose any name for it)
+### Transition methods declaration 
+
+Implement at least a transition method in your derived class (choose any name for it, here *toMenu* was choosed).
+
+Note that the transition method toMenu() must have a *bool xxxx()* signature
 
 ```c++
 class CWaitCtx : public CStateCtx {
@@ -63,12 +61,51 @@ class CWaitCtx : public CStateCtx {
 public:
     CWaitCtx()
     {};
-    bool toMenu();
+    bool toMenu();                          //a transition method
     void runEnter() override;
     void runProgress() override;
     void runExit() override;
 };
 ```
+
+### Methods definition 
+
+Once it's done you will have to define all of the methods previously declared in the *CWaitCtx* class.
+
+
+### Create an instance of your derived class *CWaitCtx* for example in the setup function : 
+
+```c++
+
+void setup() {
+
+    CWaitCtx ctxWait;   // a CWaitCtx instance
+}
+```
+
+### Create an instance of *CState* class : 
+
+Note that the *CState* instance must receive a *CStateCtx* instance (here the CWaitCtx instance previously defined).
+
+```c++
+
+void setup() {
+
+    CWaitCtx ctxWait;   
+    CState stWait(ctxWait); // a CState instance (with context instance parameter)
+}
+```
+### Create an instance of  *CMgr* class (the machine itself) :
+
+```c++
+
+void setup() {
+
+    CMgr mgr;           // a CMgr manager instance
+}
+```
+
+
 
 
 ## Usage
