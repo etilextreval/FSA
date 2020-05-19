@@ -9,31 +9,37 @@ License: MIT (see LICENSE)
             - Stores the next state to go for a valid trans
             - Manage execution of runXXX methods of current state
             - Can be runned / stopped / paused
-        CMgr derived class of CAbstractMgr :
-            - Has _pre() and _post() methods for permanent treatms
+            - Has _pre() and _post() virtual methods for cyclic operations
+                in derived classes
 */
 /**************************************************************************/
 
 #ifndef FSA_Mgr_h
 #define FSA_Mgr_h
 
+#include "FSA_State.h"
+
 class CState;
 
-class CAbstractMgr {
+class CMgr {
     
 public:
-    CAbstractMgr(const CState &startSt);
-    CAbstractMgr(const CAbstractMgr &mgr);
-    CAbstractMgr& operator=(const CAbstractMgr &mgr);
-    virtual ~CAbstractMgr();
-    enum mgrMode {STOP,RUN,PAUSE};
+    CMgr();
+    CMgr(const CState &startSt);
+    CMgr(const CMgr &mgr);
+    CMgr& operator=(const CMgr &mgr);
+    virtual ~CMgr();
+    enum mgrMode {  STOP,
+                    RUN,
+                    PAUSE};
+    void setInitState(const CState &startSt);
     void setMode(mgrMode mode);
     void manage();
     bool isRun();
     
 protected:
-    virtual void _pre()=0;
-    virtual void _post()=0;
+    virtual void _pre(){};
+    virtual void _post(){};
     
 private:
     mgrMode _mode;
@@ -46,15 +52,5 @@ private:
     void _reset();
 };
 
-class CMgr : public CAbstractMgr {
-    
-public:
-    CMgr(const CState& startSt):
-    CAbstractMgr(startSt)
-    {};
-    
-    void _pre() override;
-    void _post() override;
-};
 
 #endif /* FSA_Mgr_h */

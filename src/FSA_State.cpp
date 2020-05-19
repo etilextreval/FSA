@@ -8,10 +8,8 @@ License: MIT (see LICENSE)
 */
 /**************************************************************************/
 
-#include "FSA_State.h"
-
-#include "FSA_Ctx.h"
 #include <stdio.h>
+#include "FSA_State.h"
 
 /*!
  @brief Constructor
@@ -32,7 +30,6 @@ CState::CState(const CState &st):
     _isLast(st._isLast)
 {
 }
-
 
 /*!
  @brief equal operator override

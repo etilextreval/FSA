@@ -5,7 +5,7 @@ Original source by Alex Livrette (aka. etilextreval)
 released to the public domain
 License: MIT (see LICENSE)
  @brief CState class :
-            - Stores a unique context (CAbastractCtx object or derived)
+            - Stores a unique context (CStateCtx object or derived)
             - Executes context methods runXXX
             - Access next states of context vector of trans
 */
@@ -14,7 +14,8 @@ License: MIT (see LICENSE)
 #ifndef FSA_State_h
 #define FSA_State_h
 
-class CStateCtx;
+#include "FSA_Mgr.h"
+#include "FSA_Ctx.h"
 
 class CState {
     
@@ -25,9 +26,12 @@ public:
     ~CState();
     void runEnter() const;
     void runProgress() const;
-    void runExit()const ;
+    void runExit() const ;
     bool isLast();
     CState* getNextState() const;
+    CStateCtx& getCtx() const {
+        return _ctx;
+    };
     
 private:
     CStateCtx &_ctx;

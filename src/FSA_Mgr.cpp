@@ -13,11 +13,20 @@ License: MIT (see LICENSE)
 #include "FSA_State.h"
 #include <stdio.h>
 
+CMgr::CMgr() :
+    _bEnter(true),
+    _bProgress(false),
+    _bExit(false),
+    _initSt(nullptr),
+    _curSt(nullptr),
+    _nextSt(nullptr)   
+{}
+
 /*!
 @brief Constructor
 @param startSt reference (initial state to start the machine)
 */
-CAbstractMgr::CAbstractMgr(const CState& startSt) :
+CMgr::CMgr(const CState& startSt) :
     _bEnter(true),
     _bProgress(false),
     _bExit(false),
@@ -33,7 +42,7 @@ CAbstractMgr::CAbstractMgr(const CState& startSt) :
  @brief Copy constructor
  @param mgr reference
  */
-CAbstractMgr::CAbstractMgr(const CAbstractMgr &mgr):
+CMgr::CMgr(const CMgr &mgr) :
     _bEnter(mgr._bEnter),
     _bProgress(mgr._bProgress),
     _bExit(mgr._bExit),
@@ -53,7 +62,7 @@ CAbstractMgr::CAbstractMgr(const CAbstractMgr &mgr):
  @param mgr reference
  @return *this reference
  */
-CAbstractMgr& CAbstractMgr::operator=(const CAbstractMgr &mgr) {
+CMgr& CMgr::operator=(const CMgr &mgr) {
 
     _bEnter = mgr._bEnter;
     _bProgress = mgr._bProgress;
@@ -72,17 +81,22 @@ CAbstractMgr& CAbstractMgr::operator=(const CAbstractMgr &mgr) {
 /*!
 @brief Destructor
 */
-CAbstractMgr::~CAbstractMgr() {
+CMgr::~CMgr() {
     
     delete _curSt;
     delete _nextSt;
 }
 
+void CMgr::setInitState(const CState &startSt) {
+    _curSt = new CState(startSt);
+    _initSt = _curSt;
+};
+
 /*!
  @brief Set the current mode of manager
  @param mode : enum mgrMode
  */
-void CAbstractMgr::setMode(mgrMode mode) {
+void CMgr::setMode(mgrMode mode) {
     
     _mode = mode;
     if(_mode == STOP) {
@@ -90,14 +104,13 @@ void CAbstractMgr::setMode(mgrMode mode) {
     }
 }
 
-
 /*!
 @brief managing function of the machine
         _pre() is pre process on each loop (virtual)
         _post() is post process on each loop (virtual)
         run...() executes each current state routine
  */
-void CAbstractMgr::manage() {
+void CMgr::manage() {
     
     if(_mode == RUN) {
         
@@ -156,7 +169,7 @@ void CAbstractMgr::manage() {
  @brief Get the current running mode of the manager
  @return true only if is running
  */
-bool CAbstractMgr::isRun() {
+bool CMgr::isRun() {
     
     return(_mode == RUN);
 }
@@ -164,7 +177,7 @@ bool CAbstractMgr::isRun() {
 /*!
  @brief Restore the initial state of manager (created in constructor)
  */
-void CAbstractMgr::_reset() {
+void CMgr::_reset() {
     
     _curSt = _initSt;
     _nextSt = nullptr;

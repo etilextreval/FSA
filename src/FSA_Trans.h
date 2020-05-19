@@ -21,11 +21,14 @@ class CTrans {
 public:
     CTrans(const CState &nextSt,std::function<bool()> fct);
     bool isValid();
-    CState* getNext();
+    void setInhib(bool bInhib);
+    bool getInhib() const;
+    CState* getNext() const;
     
 private:
     std::function<bool()> _fct;
     CState & _nextSt;
+    bool _bInhib;
 };
 
 #endif /* FSA_Trans_h */

@@ -8,11 +8,11 @@ License: MIT (see LICENSE)
 */
 /**************************************************************************/
 
-
-#include "FSA_Ctx.h"
-#include "FSA_State.h"
-#include "FSA_Trans.h"
 #include <stdio.h>
+#include "FSA_Ctx.h"
+#include "FSA_Trans.h"
+#include "FSA_Mgr.h"
+#include "FSA_State.h"
 
 /*!
 @brief Default constructor
@@ -89,4 +89,14 @@ CState* CStateCtx::getNextState() const {
     if(tr != nullptr)
         return tr->getNext();
     return nullptr;
+}
+
+/*!
+ @brief Set Inhib true or false on every trans of context
+ @param bInhib : the value to set
+ */
+void CStateCtx::inhibAllTrans(bool bInhib) const {
+    
+    for(std::vector<CTrans*>::const_iterator it = _lstTrans.begin(); it!=_lstTrans.end() ; ++it)
+        (*it)->setInhib(bInhib);
 }

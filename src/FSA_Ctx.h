@@ -20,7 +20,7 @@ License: MIT (see LICENSE)
 #include <vector>
 
 class CState;
-class CTrans;
+class CMgr;
 
 class CStateCtx {
     
@@ -36,6 +36,8 @@ public:
     CTrans* setTrans(const CState &nextSt,std::function<bool()> fct);
     CTrans* getValidTrans() const;
     CState* getNextState() const;
+    void inhibAllTrans(bool bInhib) const;
+    void test(){};
     
 protected:
     std::vector<CTrans*> _lstTrans;
